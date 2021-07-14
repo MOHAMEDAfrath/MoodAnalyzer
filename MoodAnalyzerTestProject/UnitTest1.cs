@@ -9,6 +9,7 @@ namespace MoodAnalyzerTestProject
         MoodAnalyzerProgram moodSad;
         MoodAnalyzerProgram moodHappy;
         MoodAnalyzerProgram moodNull;
+        MoodAnalyzerProgram moodEmpty;
         [TestInitialize]
         public void SetUp()
         {
@@ -18,6 +19,8 @@ namespace MoodAnalyzerTestProject
             moodMessage[3] = "Sad";
             moodSad = new MoodAnalyzerProgram(moodMessage[3]);
             moodNull = new MoodAnalyzerProgram(null);
+            string empty = "";
+            moodEmpty = new MoodAnalyzerProgram(empty);
             
         }
         [TestMethod]
@@ -38,9 +41,29 @@ namespace MoodAnalyzerTestProject
         [TestMethod]
         public void TestMethodForNull()
         {
-            string expected = "Happy";
-            string actual = moodNull.MoodMessage();
-            Assert.AreEqual(expected, actual);
+            try
+            { 
+                 moodNull.MoodMessage();
+               
+            }catch(MoodAnalyzerCustomException ex)
+            {
+                string expected = "Mood cannot be null";
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
+        [TestMethod]
+        public void TestMethodForEmpty()
+        {
+            try
+            {
+                string actual = moodEmpty.MoodMessage();
+
+            }catch(MoodAnalyzerCustomException ex)
+            {
+                string expected = "Mood has empty Message";
+                Assert.AreEqual(expected,ex.Message);
+            }
+
         }
     }
 }

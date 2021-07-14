@@ -13,11 +13,15 @@ namespace MoodAnalyzer
         {
             this.message = message;
         }
-        //using try catch to catch null reference exception
+        //using try catch to catch exceptions
         public string MoodMessage()
         {
             try
             {
+                if (this.message.Equals(string.Empty))
+                {
+                    throw new MoodAnalyzerCustomException(MoodAnalyzerCustomException.ExceptionType.EMPTY_MESSAGE, "Mood has empty Message");
+                }
                 if (this.message.ToLower().Equals("sad"))
                 {
                     return "Sad";
@@ -28,7 +32,11 @@ namespace MoodAnalyzer
                 }
             }catch(NullReferenceException ex)
             {
-                return "Happy";
+
+                throw new MoodAnalyzerCustomException(MoodAnalyzerCustomException.ExceptionType.NULL_MESSAGE, "Mood cannot be null");
+               
+
+                
             }
         }
 
