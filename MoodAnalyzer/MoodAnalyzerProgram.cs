@@ -13,13 +13,20 @@ namespace MoodAnalyzer
         {
             this.message = message;
         }
+        //using try catch to catch null reference exception
         public string MoodMessage()
         {
-            if (this.message.ToLower().Equals("sad"))
+            try
             {
-                return "Sad";
-            }
-            else
+                if (this.message.ToLower().Equals("sad"))
+                {
+                    return "Sad";
+                }
+                else
+                {
+                    return "Happy";
+                }
+            }catch(NullReferenceException ex)
             {
                 return "Happy";
             }
