@@ -65,5 +65,22 @@ namespace MoodAnalyzerTestProject
             }
 
         }
+        [TestMethod]
+        public void TestCreateObjectWithRelections()
+        {
+            object expected = new MoodAnalyzerProgram();
+            object actual = MoodAnalyzerFactory.CreateObjectForMoodAnalyse("MoodAnalyzer.MoodAnalyzerProgram","MoodAnalyzerProgram");
+            expected.Equals(actual);
+
+        }
+        [TestMethod]
+        public void NegativeTestCreateObjectWithRelections()
+        {
+            object expected = new MoodAnalyzerProgram();
+            object actual = MoodAnalyzerFactory.CreateObjectForMoodAnalyse("MoodAnalyzer.MoodAnalyzerProgra", "MoodAnalyzerProgra");
+            expected.Equals(actual);
+
+        }
+
     }
 }
