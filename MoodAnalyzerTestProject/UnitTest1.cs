@@ -128,5 +128,22 @@ namespace MoodAnalyzerTestProject
             object actual = MoodAnalyzerFactory.CreateParameterizedConstructor("MoodAnalyzer.MoodAnalyzerProgram", "MoodAnalyzerProgra", "Happy");
             actual.Equals(expected);
         }
+        //Invoke method for happy message
+        [TestMethod]
+        public void TestInvokeMethodShouldReturnHappy()
+        {
+            string expected = "Happy";
+            string actual = MoodAnalyzerFactory.InvokeMethod("MoodMessage", "Happy");
+            Assert.AreEqual(expected, actual);
+        }
+        //Invoke method for wrong method name
+        [TestMethod]
+        public void NegativeTestInvokeMethodShouldReturnHappy()
+        {
+            string expected = "Happy";
+            string actual = MoodAnalyzerFactory.InvokeMethod("MoodMessag", "Happy");
+            Assert.AreEqual(expected, actual);
+        }
     }
+
 }
