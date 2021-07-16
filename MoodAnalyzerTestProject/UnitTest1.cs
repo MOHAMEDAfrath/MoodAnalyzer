@@ -59,7 +59,7 @@ namespace MoodAnalyzerTestProject
                 Assert.AreEqual(expected, ex.Message);
             }
         }
-        //test message for Empty message
+        //test method message for Empty message
         [TestMethod]
         public void TestMethodForEmpty()
         {
@@ -168,7 +168,6 @@ namespace MoodAnalyzerTestProject
             string expected = "Happy";
             string actual = MoodAnalyzerFactory.SetMessage("message", null);
             Assert.AreEqual(expected, actual);
-
         }
 
     }
