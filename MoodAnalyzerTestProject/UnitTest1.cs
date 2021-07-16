@@ -97,7 +97,7 @@ namespace MoodAnalyzerTestProject
         }
         //Negative test case for no constructor found
         [TestMethod]
-        public void NegativeTestCreateObjectWithRelections1()
+        public void NegativeTestCreateObjectWithReflections1()
         {
             object expected = new MoodAnalyzerProgram();
             object actual = MoodAnalyzerFactory.CreateObjectForMoodAnalyse("MoodAnalyzer.MoodAnalyzerProgram", "MoodAnalyzerProgra");
@@ -144,6 +144,33 @@ namespace MoodAnalyzerTestProject
             string actual = MoodAnalyzerFactory.InvokeMethod("MoodMessag", "Happy");
             Assert.AreEqual(expected, actual);
         }
+        //test method to set fields
+        [TestMethod]
+        public void TestSetFields()
+        {
+            string expected = "Happy";
+            string actual = MoodAnalyzerFactory.SetMessage("message","Happy");
+            Assert.AreEqual(expected, actual);
+        }
+        //negative test method if no field found
+        [TestMethod]
+        public void NegativeTestForNoFieldFound()
+        {
+            string expected = "Happy";
+            string actual = MoodAnalyzerFactory.SetMessage("messag", "Happy");
+            Assert.AreEqual(expected, actual);
+
+        }
+        //negative test method if no null message
+        [TestMethod]
+        public void NegativeTestForFieldNullMessage()
+        {
+            string expected = "Happy";
+            string actual = MoodAnalyzerFactory.SetMessage("message", null);
+            Assert.AreEqual(expected, actual);
+
+        }
+
     }
 
 }
