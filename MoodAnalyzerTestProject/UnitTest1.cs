@@ -104,5 +104,29 @@ namespace MoodAnalyzerTestProject
             expected.Equals(actual);
 
         }
+        //Test method to create parameterized contructor
+        [TestMethod]
+        public void TestParameterConstructor()
+        {
+            object expected = new MoodAnalyzerProgram("Happy");
+            object actual = MoodAnalyzerFactory.CreateParameterizedConstructor("MoodAnalyzer.MoodAnalyzerProgram", "MoodAnalyzerProgram", "Happy");
+            actual.Equals(expected);
+        }
+        //negative Test method to create parameterized contructor with improper class name
+        [TestMethod]
+        public void NegativeTestParameterConstructor()
+        {
+            object expected = new MoodAnalyzerProgram("Happy");
+            object actual = MoodAnalyzerFactory.CreateParameterizedConstructor("MoodAnalyzer.MoodAnalyzerProgra", "MoodAnalyzerProgram", "Happy");
+            actual.Equals(expected);
+        }
+        //negative Test method to create parameterized contructor with improper constructor name
+        [TestMethod]
+        public void NegativeTestParameterConstructor1()
+        {
+            object expected = new MoodAnalyzerProgram("Happy");
+            object actual = MoodAnalyzerFactory.CreateParameterizedConstructor("MoodAnalyzer.MoodAnalyzerProgram", "MoodAnalyzerProgra", "Happy");
+            actual.Equals(expected);
+        }
     }
 }
