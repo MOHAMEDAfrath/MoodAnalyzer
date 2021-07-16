@@ -6,30 +6,43 @@ namespace MoodAnalyzerTestProject
     [TestClass]
     public class UnitTest1
     {
-        MoodAnalyzerProgram mood;
-        MoodAnalyzerProgram mood1;
-        [TestInitialize]
-        public void SetUp()
-        {
-            string message = "I am in any Mood";
-            string[] moodMessage = message.Split(" ");
-            mood = new MoodAnalyzerProgram(moodMessage[3]);
-            moodMessage[3] = "Sad";
-            mood1 = new MoodAnalyzerProgram(moodMessage[3]);
-        }
+        //Postive test Method to print sad mood
+      
         [TestMethod]
         public void TestMethodForSad()
         {
+            MoodAnalyzerProgram moodSad = new MoodAnalyzerProgram("Sad");
             string expected = "Sad";
-            string actual = mood1.MoodMessage();
+            string actual = moodSad.MoodMessage();
             Assert.AreEqual(expected, actual);
 
         }
+        //Negative test Method to print sad mood
+        [TestMethod]
+        public void NegativeTestMethodForSad()
+        {
+            MoodAnalyzerProgram moodSad = new MoodAnalyzerProgram("Happy");
+            string expected = "Sad";
+            string actual = moodSad.MoodMessage();
+            Assert.AreEqual(expected, actual);
+
+        }
+        //positive test Method to print Happy mood
         [TestMethod]
         public void TestMethodForHappy()
         {
+            MoodAnalyzerProgram moodHappy = new MoodAnalyzerProgram("Happy");
             string expected = "Happy";
-            string actual = mood.MoodMessage();
+            string actual = moodHappy.MoodMessage();
+            Assert.AreEqual(expected, actual);
+        }
+        //Negative test Method to print Happy mood
+        [TestMethod]
+        public void NegativeTestMethodForHappy()
+        {
+            MoodAnalyzerProgram moodHappy = new MoodAnalyzerProgram("Sad");
+            string expected = "Happy";
+            string actual = moodHappy.MoodMessage();
             Assert.AreEqual(expected, actual);
         }
     }
