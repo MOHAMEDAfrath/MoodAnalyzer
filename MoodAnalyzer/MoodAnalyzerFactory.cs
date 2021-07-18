@@ -10,6 +10,7 @@ namespace MoodAnalyzer
 {
     public class MoodAnalyzerFactory
     {
+        //create object for current assembly
         public static object CreateObjectForMoodAnalyse(string classname,string constructorname)
         {
             string pattern = @"."+constructorname+"$";
@@ -32,6 +33,7 @@ namespace MoodAnalyzer
                 throw new MoodAnalyzerCustomException(MoodAnalyzerCustomException.ExceptionType.NO_CONSTRUCTOR_FOUND, "No constructor found");
             }
         }
+        //create parameterized constructor
         public static object CreateParameterizedConstructor(string classname,string constructorname,string message)
         {
             Type type = typeof(MoodAnalyzerProgram);
@@ -54,6 +56,7 @@ namespace MoodAnalyzer
             }
 
         }
+        //Invokes the method in given class
         public static string InvokeMethod(string methodname ,string message)
         {
             try
@@ -71,6 +74,7 @@ namespace MoodAnalyzer
                 throw new MoodAnalyzerCustomException(MoodAnalyzerCustomException.ExceptionType.NO_METHOD_FOUND, "No method found");
             }
         }
+        //Access the field in class and modify it
         public static string SetMessage(string variable,string message)
         {
             try
